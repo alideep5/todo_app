@@ -1,7 +1,9 @@
 from fastapi import APIRouter
 
-router = APIRouter()
+class LoginRouter(APIRouter):
+    def __init__(self):
+        super().__init__()
+        self.add_api_route("/login", self.perform_login, methods=["GET"])
 
-@router.get("/login")
-async def read_feature1():
-    return {"message": "This is Login API"}
+    async def perform_login(self):
+        return {"message": "This is Login API"}

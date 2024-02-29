@@ -1,7 +1,9 @@
 from fastapi import APIRouter
 
-router = APIRouter()
+class TodoRouter(APIRouter):
+    def __init__(self):
+        super().__init__()
+        self.add_api_route("/todos", self.get_todos, methods=["GET"])
 
-@router.get("/todos")
-async def read_feature1():
-    return {"message": "This is TODO'S API"}
+    async def get_todos(self):
+        return {"message": "This is TODO'S API"}
